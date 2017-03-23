@@ -1,0 +1,31 @@
+button{
+	width:100px;
+	height:100px;
+}
+
+.top_buttons{
+	display: inline-block;
+
+}
+.buttom_buttons{
+	padding-bottom: 200px;
+	display: inline-block;
+}
+
+#game_button_1{
+	background-color:blue;
+/*#00FFFF*/
+}
+#game_button_2{
+	background-color:green;
+/*#7FFF00*/
+}
+#game_button_3{
+	background-color:yellow;
+/*#FFD700*/
+}
+#game_button_4{
+	background-color:red;
+	/*#DC143C*/
+
+}

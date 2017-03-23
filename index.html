@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SIMON</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>this is the SIMON game</h1>
+<p>in this game you need to choose the same color as the game picks for you</p>
+<div class="simon_game">
+	<div class="top_buttons">
+		<button id="game_button_1" onclick="makeColorAndVoice(this)"></button>
+		<button id="game_button_2" onclick="makeColorAndVoice(this)"></button>
+	</div>
+
+	<div class="buttom_buttons">
+		<button id="game_button_3" onclick="makeColorAndVoice(this)"></button>
+		<button id="game_button_4" onclick="makeColorAndVoice(this)"></button>
+		<!-- <button onclick="backToOriginColor()">back to orig</button> -->
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+<script type="text/javascript" src="functions.js"></script>
+<script>
+		$( document ).ready(function() {
+    console.log( "ready!" );
+
+	// var snd = new Audio("voices/cartoon004.wav"); // buffers automatically when created
+	// snd.play();
+
+
+	});
+</script>
+<!-- http://acastano.com/others/video_games/5-ss/ss-class-exercise-solution/simon_1_class_sounds.html -->
+
+</body>
+</html>
