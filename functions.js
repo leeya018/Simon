@@ -2,10 +2,12 @@ var game={
 
 
 }
-game.intervalId = -1;
-game.currLevel =4;
+game.currCheck =0;
+
+game.currLevel =1;
 game.endLevel =10;
-game.indexLocation =0;
+
+game.memory=[];
 
 game.colorsButts = new Map();
 
@@ -38,6 +40,8 @@ game.looseSound = new Audio("voices/cartoon_fail.wav");
 // game.nextLevelSound=;
 
 game.succession=[];
+
+$("#levelId").text(game.currLevel);
 
 //play the sound and the bright imae of the game for wach button
 function makeColorAndVoice(item){
@@ -88,6 +92,9 @@ function makeVoice(id){
 function faildAndRestartGame(){
 	// var
 	alert("you fails");
+	game.memory=[];
+	game.currCheck = 0;
+
 }
 
 //playing the succession for each level
@@ -97,21 +104,27 @@ function faildAndRestartGame(){
 	 var intervalId = setInterval(playSuccessionHelper,1000);
 
 //operate each time random button with audio and color
-function  playSuccessionHelper(){
-		iterations++;
- 		rand = ramndomNum();
- 		var randId = game.butts[rand];
- 		makeColorAndVoiceById(randId);
- 		if(iterations >= game.currLevel)
- 		{
- 			 clearInterval(intervalId);
- 		}
+	function  playSuccessionHelper(){
+			iterations++;
+	 		rand = ramndomNum();
+	 		game.memory.push(game.butts[rand]);
+	 		var randId = game.butts[rand];
+	 		makeColorAndVoiceById(randId);
+	 		if(iterations >= game.currLevel)
+	 		{
+	 			 clearInterval(intervalId);
+	 		}
+
+	}
+
+
 
 }
 
-
-}
-
+// // invoke playSuccession
+// function playLevel(){
+// 	playSuccession();
+// }
 
 
 
@@ -124,26 +137,50 @@ function ramndomNum(){
 //checking the succession for each level 
 //if fail so will call faildAndRestartGame();
 //if sibish succesfully will call nextLevel();
- function checkGame(){
+ function checkGame(item){
+ 	makeColorAndVoice(item);
+ 	var id = $(item).attr("id");
+ 		if(id == game.memory[game.currCheck])
+ 		{
+ 			 game.currCheck++;
+ 			 console.log("++");
+ 			 if(game.currCheck == game.memory.length )
+ 			 {
+ 			 	setTimeout(nextLevel,1000);
+ 			 	
+ 			 }
+ 		}
+ 		else
+ 		{
+ 			setTimeout(faildAndRestartGame,1000);
+ 			
+ 		}
+ 	}
 
-}
 
 //will increase the level by one
 //and will call playSuccession();
 //and after it will call checkGame();  
 function nextLevel(){
+	if(!checkIfGameisFinish()){
+		alert("next level");
+		game.currLevel++;
+		game.currCheck = 0;
+		game.memory=[];
+		 $("#levelId").text(game.currLevel);
+	}
+	else{
+		alert("you won the game");
+	}
+
 
 
 }
 
-//will show alert on the screen 
-function gameFinshSuccessfully(){
-
-}
 
 //will check if currLevel equals to endLevel and will call gameFinshSuccessfully();
 //if not so it will call to : nextLevel();
 function checkIfGameisFinish(){
-
+	return game.currLevel == game.endLevel;
 }
 
