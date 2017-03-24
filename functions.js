@@ -1,5 +1,6 @@
-var game={
+//need to ceck the new code 
 
+var game={
 
 }
 game.currCheck =0;
@@ -94,22 +95,24 @@ function faildAndRestartGame(){
 	alert("you fails");
 	game.memory=[];
 	game.currCheck = 0;
-
+	game.currLevel = 1;
+	 $("#levelId").text(game.currLevel);
 }
 
 //playing the succession for each level
  function playSuccession(){
- 	var rand;
+ 	if(game.memory.length == 0)
+ 	{
+ 		initMemory();
+ 	}
+ 	// var rand;
  	var iterations = 0;
 	 var intervalId = setInterval(playSuccessionHelper,1000);
 
 //operate each time random button with audio and color
 	function  playSuccessionHelper(){
 			iterations++;
-	 		rand = ramndomNum();
-	 		game.memory.push(game.butts[rand]);
-	 		var randId = game.butts[rand];
-	 		makeColorAndVoiceById(randId);
+	 		makeColorAndVoiceById(game.memory[iterations-1]);
 	 		if(iterations >= game.currLevel)
 	 		{
 	 			 clearInterval(intervalId);
@@ -117,6 +120,15 @@ function faildAndRestartGame(){
 
 	}
 
+}
+
+function initMemory(){
+	var rand;
+	for (var i = 0; i < game.endLevel ; i++) {
+
+	 		rand = ramndomNum();
+	 		game.memory.push(game.butts[rand]);		
+	}
 
 
 }
@@ -144,7 +156,7 @@ function ramndomNum(){
  		{
  			 game.currCheck++;
  			 console.log("++");
- 			 if(game.currCheck == game.memory.length )
+ 			 if(game.currCheck == game.currLevel )
  			 {
  			 	setTimeout(nextLevel,1000);
  			 	
@@ -166,7 +178,7 @@ function nextLevel(){
 		alert("next level");
 		game.currLevel++;
 		game.currCheck = 0;
-		game.memory=[];
+		// game.memory=[];
 		 $("#levelId").text(game.currLevel);
 	}
 	else{
