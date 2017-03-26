@@ -1,31 +1,54 @@
 button{
 	width:100px;
 	height:100px;
-}
-
-.top_buttons{
-	display: inline-block;
 
 }
-.buttom_buttons{
-	padding-bottom: 200px;
-	display: inline-block;
+#start_butt{
+
+	margin-left: 300px;
+	margin-bottom: 100px;
 }
+
+
 
 #game_button_1{
 	background-color:blue;
-/*#00FFFF*/
+    /*background: #006699;*/
+     border-radius: 100px 0 0 0;
+     -moz-border-radius: 100px 0 0 0;
+     -webkit-border-radius: 100px 0 0 0;
+
+
 }
 #game_button_2{
 	background-color:green;
-/*#7FFF00*/
+     border-radius: 0 100px 0 0;
+     -moz-border-radius: 0 100px 0 0;
+     -webkit-border-radius: 0 100px 0 0;
+     /*background: #117300;*/
+
+
 }
 #game_button_3{
 	background-color:yellow;
-/*#FFD700*/
+
+     /*background: #006699;*/
+
+
+          border-radius: 0 0 0 100px;
+     -moz-border-radius: 0 0 0 100px;
+     -webkit-border-radius: 0 0 0 100px;
+
 }
 #game_button_4{
 	background-color:red;
-	/*#DC143C*/
+
+     /*background: #117300;*/
+
+
+         border-radius: 0 0 100px 0;
+    -moz-border-radius: 0 0 100px 0;
+    -webkit-border-radius: 0 0 100px 0;
+
 
 }
