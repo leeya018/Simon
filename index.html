@@ -5,40 +5,30 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>this is the SIMON game</h1>
-<p>in this game you need to choose the same color as the game picks for you</p>
-<div class="simon_game">
-<label>level : <p id=levelId></p></label>
-	<div class="top_buttons">
-		<button id="game_button_1" onclick="checkGame(this)"></button>
-		<button id="game_button_2" onclick="checkGame(this)"></button>
-	</div>
-
-	<div class="buttom_buttons">
-		<button id="game_button_3" onclick="checkGame(this)"></button>
-		<button id="game_button_4" onclick="checkGame(this)"></button>
-	
-		<!-- <button onclick="backToOriginColor()">back to orig</button> -->
-	</div>
-		<button id="start_butt" onclick="playSuccession()">start</button>
+	<h1>SIMON</h1>
+	<div id="simon_game">
+		<label>level : </label><label id=levelId></label>
+		<p id="massage">!!!!!!!!!!!</p>
+		<div class="top_buttons">
+			<button id="game_button_1" onclick="checkGame(this)"></button>
+			<button id="game_button_2" onclick="checkGame(this)"></button>
+		</div>
+		<div class="buttom_buttons">
+			<button id="game_button_3" onclick="checkGame(this)"></button>
+			<button id="game_button_4" onclick="checkGame(this)"></button>
+		</div>
+		
 		<a href="instruction.html">instructions</a>
-</div>
-			
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-<script type="text/javascript" src="functions.js"></script>
-<script>
+	</div>
+	<button id="start_butt" onclick="playSuccession()">start over</button>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+	<script type="text/javascript" src="functions.js"></script>
+	<script>
 		$( document ).ready(function() {
-    console.log( "ready!" );
+			console.log( "ready!" );
+			playSuccession();
 
-	// var snd = new Audio("voices/cartoon004.wav"); // buffers automatically when created
-	// snd.play();
-
-
-	});
-</script>
-<!-- http://acastano.com/others/video_games/5-ss/ss-class-exercise-solution/simon_1_class_sounds.html -->
-
+		});
+	</script>
 </body>
 </html>
