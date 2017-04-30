@@ -84,17 +84,17 @@ function faildAndRestartGame(){
 	game.currLevel = 1;
 	$("#levelId").text(game.currLevel);
 	$("#start_butt").css("visibility","visible");
-	enableBtnsGame(true);
+	disableBtnsGame(true);
 }
 
-function enableBtnsGame(flag){
-	enableBtnGame("game_button_1",flag);
-	enableBtnGame("game_button_2",flag);
-	enableBtnGame("game_button_3",flag);
-	enableBtnGame("game_button_4",flag);
+function disableBtnsGame(flag){
+	disableBtnGame("game_button_1",flag);
+	disableBtnGame("game_button_2",flag);
+	disableBtnGame("game_button_3",flag);
+	disableBtnGame("game_button_4",flag);
 }
 
-function enableBtnGame(btnName,flag){
+function disableBtnGame(btnName,flag){
 	var name = "#"+btnName;
 	$(name).attr("disabled", flag);
 }
@@ -106,7 +106,7 @@ function hiddenStartOverBtn(){
 //playing the succession for each level
 function playSuccession(){
 	hiddenStartOverBtn();
-	enableBtnsGame(false);
+
 	makeMsgHidden();
 	if(game.memory.length == 0)
 	{
@@ -119,10 +119,14 @@ function playSuccession(){
 //operate each time random button with audio and color
 function  playSuccessionHelper(){
 	iterations++;
+	disableBtnsGame(true);
 	makeColorAndVoiceById(game.memory[iterations-1]);
 	if(iterations >= game.currLevel)
 	{
+		setTimeout(disableBtnsGame,500,false);
+		// disableBtnsGame(false);
 		clearInterval(intervalId);
+
 	}
 }
 }
